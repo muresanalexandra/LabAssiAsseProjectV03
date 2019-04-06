@@ -1,8 +1,11 @@
 import Domain.Student;
+import Domain.TemaLab;
 import Exceptions.ValidatorException;
 import Repository.MemoryRepository.StudentRepo;
+import Repository.MemoryRepository.TemaLabRepo;
 import Validator.IValidator;
 import Validator.StudentValidator;
+import Validator.TemaLabValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
@@ -52,7 +55,7 @@ public class StudentTest {
         logger.info("This is a test for testing the add feature");
         Assert.assertEquals("The repo is empty at the beginning", 0, studentRepo.size());
         studentRepo.save(student);
-        Assert.assertEquals("The student was not added",1,studentRepo.size());
+        Assert.assertEquals("The student was not added", 1, studentRepo.size());
     }
 
     @Test
@@ -60,7 +63,7 @@ public class StudentTest {
         logger.info("This is a test for testing the remove feature");
         addStudentTest();
         studentRepo.delete(student.getId());
-        Assert.assertEquals("The repo is not empty",0,studentRepo.size());
+        Assert.assertEquals("The repo is not empty", 0, studentRepo.size());
 
     }
 }
