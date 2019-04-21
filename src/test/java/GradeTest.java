@@ -48,18 +48,24 @@ public class GradeTest {
     @Test
     public void idGradeTest() {
         logger.info("Check if an id has only int digits");
-        Assert.assertTrue("The id contains a char value", student.getId().matches("[*0-9]"));
+        try {
+            Assert.assertTrue("The id contains a char value", student.getId().matches("[*0-9]"));
+        }catch(Exception ex ) { System.out.println("Not a valid id");}
     }
     @Test
     public void validValueTest() {
         logger.info("Check if a grade has is in the correct format ");
-        Assert.assertFalse("The assignment cannot be less than 1 and greater than 0", this.notaValida.getValoare() < 1 && this.notaValida.getValoare() >10);
+        try {
+            Assert.assertFalse("The assignment cannot be less than 1 and greater than 0", this.notaValida.getValoare() < 1 && this.notaValida.getValoare() > 10);
+        }catch (Exception ex) { System.out.println("Not a valid value");}
     }
 
     @Test
     public void invalidValueTest() {
         logger.info("Check if the grade is in the correct form");
-        Assert.assertFalse("The assignment cannot be less than 1 and greater than 0", this.notaInvalida.getValoare() < 1 && this.notaInvalida.getValoare() >10);
+        try {
+            Assert.assertFalse("The assignment cannot be less than 1 and greater than 0", this.notaInvalida.getValoare() < 1 && this.notaInvalida.getValoare() > 10);
+        }catch (Exception ex) { System.out.println("The value is not valid"); }
     }
 
 

@@ -13,6 +13,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.sql.SQLOutput;
+
 public class AssignmentTest {
     private static Logger logger = LogManager.getLogger(StudentTest.class);
     private Student student = new Student("1", "Alexandru Kispal", 934, "kispal.alex@gmail.com", "Muresan Alexandra");
@@ -50,7 +52,7 @@ public class AssignmentTest {
     public void invalidDeadlineTest() {
         logger.info("This is a test for testing the invalid deadline for the homework");
         try {
-            Assert.assertTrue("The deadline must be greater than 0, smaller than week 14", this.temaLabInvalid.getTermenLimita() > 0 && this.temaLabInvalid.getTermenLimita() <= 14);
+            Assert.assertFalse("The deadline must be greater than 0, smaller than week 14", this.temaLabInvalid.getTermenLimita() > 0 && this.temaLabInvalid.getTermenLimita() <= 14);
         } catch (Exception ex) { System.out.println("Not a valid deadline"); }
     }
 
@@ -64,7 +66,7 @@ public class AssignmentTest {
     public void invalidDeliveryWeekTest() {
         logger.info("This is a test for testing the invalid delivery week for the homework");
         try {
-            Assert.assertTrue("The delivery week must be greater than 1, smaller than week 14", this.temaLabInvalid.getTermenLimita() > 1 && this.temaLabInvalid.getTermenLimita() <= 14);
+            Assert.assertFalse("The delivery week must be greater than 1, smaller than week 14", this.temaLabInvalid.getTermenLimita() > 1 && this.temaLabInvalid.getTermenLimita() <= 14);
         } catch(Exception ex){ System.out.println("The delivery week is not valid") ;}
     }
 
@@ -77,7 +79,11 @@ public class AssignmentTest {
     @Test
     public void invalidDescriptionTest(){
         logger.info("This is a test for verifying the behaviour in case an invalid description is entered for a lab assignment");
-        Assert.assertTrue("The descrition cannot be an empty string",this.temaLabInvalid.getDescriere() != "");
+        try {
+            Assert.assertFalse("The descrition cannot be an empty string", this.temaLabInvalid.getDescriere() != "");
+        }catch (Exception ex){
+            System.out.println("This is not a valid descrption");
+        }
     }
 
     @Test

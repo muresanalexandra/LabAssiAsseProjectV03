@@ -41,7 +41,11 @@ public class StudentTest {
     @Test
     public void invalidNameTest() {
         logger.info("Test if a name isn't null");
-        Assert.assertNotNull("Invalid name because empty", studentInvalid.getNume());
+        try {
+            Assert.assertNull("Invalid name because empty", studentInvalid.getNume());
+        }catch (Exception ex) {
+            System.out.println("not a valid name");
+        }
     }
 
     @Test

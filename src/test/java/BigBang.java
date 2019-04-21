@@ -21,8 +21,6 @@ import java.time.LocalDateTime;
 
 
 public class BigBang{
-
-
     private static Logger logger = LogManager.getLogger(StudentTest.class);
     private Student student = new Student("1", "Alexandru Kispal", 934, "kispal.alex@gmail.com", "Muresan Alexandra");
     private Student studentInvalid = new Student("*3", (String)null, 67, "aa", "Ki$pal Mondi@lu");
